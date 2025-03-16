@@ -1,0 +1,9 @@
+.ingredient-card {
+	display: flex;
+	flex-direction: column;
+	width: 272px;
+	min-height: 208px;
+	cursor: pointer;
+    align-items: center;
+    position: relative;
+}
