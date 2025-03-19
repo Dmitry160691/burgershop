@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import s from './burger-ingredients.module.scss';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import { data } from '@utils/data';

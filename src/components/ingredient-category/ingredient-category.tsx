@@ -14,7 +14,7 @@ export const IngredientCategory: FC<IngredientCategoryProps> = ({
 	return (
 		<>
 			<h2 className='mt-10 text_type_main-medium'>{title}</h2>
-			<div className={`ml-3 mr-3 mb-3 ${s['flex-container']}`}>
+			<div className={`ml-3 mb-3 ${s['flex-container']}`}>
 				{items.map((item, index) => (
 					<IngredientCard key={index} item={item} />
 				))}

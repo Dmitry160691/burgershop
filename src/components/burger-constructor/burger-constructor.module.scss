@@ -1,4 +1,28 @@
 .container {
     width: 600px;
-    min-height: 1000px;
+    min-height: calc(100vh - 88px);
+}
+.container-components-main,
+.container-components{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.container-components{
+    height: 656px;
+}
+
+.container-components-main{
+    max-height: 464px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.container-info{
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 40px;
 }
