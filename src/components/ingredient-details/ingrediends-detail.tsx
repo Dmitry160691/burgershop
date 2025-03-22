@@ -6,12 +6,12 @@ import { IngredientType } from '../../types/app.types';
 
 type IngredientDetailProps = {
 	ingredient: IngredientType;
-	handleClose: () => void;
+	onClose: () => void;
 };
 
 export const IngredientDetail: FC<IngredientDetailProps> = ({
 	ingredient,
-	handleClose,
+	onClose,
 }) => {
 	const {
 		image_large: imageSrc,
@@ -23,7 +23,7 @@ export const IngredientDetail: FC<IngredientDetailProps> = ({
 	} = ingredient;
 
 	return (
-		<Modal handleClose={handleClose} title='Детали ингредиента'>
+		<Modal onClose={onClose} title='Детали ингредиента'>
 			<div className={s.container}>
 				<img src={imageSrc} alt={name} className={`${s.img} mb-4`} />
 				<span className='text_type_main-medium mb-8'>{name}</span>

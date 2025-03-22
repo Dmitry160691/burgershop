@@ -5,15 +5,15 @@ import imageDone from '../../assets/image-done.svg';
 
 type OrderDetailsProps = {
 	orderNumber: string;
-	handleClose: () => void;
+	onClose: () => void;
 };
 
 export const OrderDetails: FC<OrderDetailsProps> = ({
 	orderNumber,
-	handleClose,
+	onClose,
 }) => {
 	return (
-		<Modal handleClose={handleClose}>
+		<Modal onClose={onClose}>
 			<div className={`${s.order} mt-4`}>
 				<span className={`${s['order-number']} text_type_digits-large mb-8`}>
 					{orderNumber}

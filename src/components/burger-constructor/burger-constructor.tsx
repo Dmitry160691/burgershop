@@ -20,14 +20,14 @@ export const BurgerConstructor: FC<BurgerConstructorProps> = ({ data }) => {
 
 	const [isOpenOrderDetails, setIsOpenOrderDetails] = useState(false);
 
-	const handleOpen = () => setIsOpenOrderDetails(true);
-	const handleClose = () => setIsOpenOrderDetails(false);
+	const onOpen = () => setIsOpenOrderDetails(true);
+	const onClose = () => setIsOpenOrderDetails(false);
 
 	if (!bun) return null;
 	return (
 		<>
 			{isOpenOrderDetails && (
-				<OrderDetails orderNumber={orderNumber} handleClose={handleClose} />
+				<OrderDetails orderNumber={orderNumber} onClose={onClose} />
 			)}
 			<section className={`pl-4 ${s.container}`}>
 				<div className={`mt-20 ${s['components-container']}`}>
@@ -69,7 +69,7 @@ export const BurgerConstructor: FC<BurgerConstructorProps> = ({ data }) => {
 						htmlType='button'
 						size='large'
 						type='primary'
-						onClick={handleOpen}>
+						onClick={onOpen}>
 						Оформить заказ
 					</Button>
 				</div>
