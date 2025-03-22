@@ -1,12 +1,12 @@
-export const groupByType = (array: any) => {
-	return array.reduce((acc: any, obj: any) => {
+export const groupByType = (array) => {
+	return array.reduce((acc, obj) => {
 	  const { type, ...rest } = obj;
 	  
 	  if (!acc[type]) {
 		acc[type] = [];
 	  }
 	  
-	  acc[type].push(rest);
+	  acc[type].push({ type, ...rest });
 	  
 	  return acc;
 	}, {});

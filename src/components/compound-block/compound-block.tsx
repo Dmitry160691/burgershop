@@ -3,7 +3,7 @@ import s from './compound-block.module.scss';
 
 type CompoundBlockProps = {
 	title: string;
-	value: string;
+	value: number;
 };
 
 export const CompoundBlock: FC<CompoundBlockProps> = ({ title, value }) => {

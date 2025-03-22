@@ -2,9 +2,10 @@ import { Modal } from '@components/modal/modal';
 import { FC } from 'react';
 import s from './ingrediends-detail.module.scss';
 import { CompoundBlock } from '@components/compound-block/compound-block';
+import { IngredientType } from '../../types/app.types';
 
 type IngredientDetailProps = {
-	ingredient: any;
+	ingredient: IngredientType;
 	handleClose: () => void;
 };
 

@@ -1,4 +1,18 @@
-.container {
+.container,
+.blocks-wrapper {
 	display: flex;
+}
+
+.container {
 	gap: 40px;
+}
+
+.blocks-wrapper {
+	left: 0;
+	top: 0;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
 }

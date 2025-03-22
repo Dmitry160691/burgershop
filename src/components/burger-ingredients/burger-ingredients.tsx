@@ -1,14 +1,19 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import s from './burger-ingredients.module.scss';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
-import { data } from '@utils/data';
 import { groupByType } from '@utils/groupByType';
 import { IngredientCategory } from '@components/ingredient-category/ingredient-category';
+import { IngredientType } from '../../types/app.types';
 
-export const BurgerIngredients = () => {
+type BurgerIngredientsProps = {
+	data: IngredientType[];
+};
+
+export const BurgerIngredients: FC<BurgerIngredientsProps> = ({ data }) => {
 	const [current, setCurrent] = useState('bun');
 
 	const res = groupByType(data);
+	console.log(res);
 
 	const tabs = [
 		{
@@ -26,7 +31,7 @@ export const BurgerIngredients = () => {
 	];
 
 	return (
-		<div className={s.container}>
+		<section className={s.container}>
 			<h1 className='mt-10 text_type_main-large'>Соберите бургер</h1>
 			<div className={`mt-5 ${s['container-tabs']}`}>
 				{tabs.map((v, index) => (
@@ -48,6 +53,6 @@ export const BurgerIngredients = () => {
 					/>
 				))}
 			</div>
-		</div>
+		</section>
 	);
 };

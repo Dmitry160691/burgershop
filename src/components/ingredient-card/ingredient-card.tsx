@@ -5,9 +5,10 @@ import {
 	CurrencyIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { IngredientDetail } from '@components/ingredient-details/ingrediends-detail';
+import { IngredientType } from '../../types/app.types';
 
 type IngredientCardProps = {
-	item: any;
+	item: IngredientType;
 	count?: number;
 };
 

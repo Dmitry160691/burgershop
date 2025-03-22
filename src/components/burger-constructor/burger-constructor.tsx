@@ -4,13 +4,18 @@ import {
 	CurrencyIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import s from './burger-constructor.module.scss';
-import { data } from '@utils/data';
 import { IngredientConstructorElement } from '@components/ingredient-constructor-element/ingredient-constructor-element';
 import { FC, useState } from 'react';
 import { OrderDetails } from '@components/order-details/order-datails';
+import { IngredientType } from '../../types/app.types';
 
-export const BurgerConstructor: FC = () => {
+type BurgerConstructorProps = {
+	data: IngredientType[];
+};
+
+export const BurgerConstructor: FC<BurgerConstructorProps> = ({ data }) => {
 	const bun = data.find((v) => v.type === 'bun');
+	const mainComponents = data.filter((v) => v.type !== 'bun');
 	const orderNumber = '034536';
 
 	const [isOpenOrderDetails, setIsOpenOrderDetails] = useState(false);
@@ -24,7 +29,7 @@ export const BurgerConstructor: FC = () => {
 			{isOpenOrderDetails && (
 				<OrderDetails orderNumber={orderNumber} handleClose={handleClose} />
 			)}
-			<div className={`pl-4 pr-4 ${s.container}`}>
+			<section className={`pl-4 pr-4 ${s.container}`}>
 				<div className={`mt-20 ${s['components-bun']}`}>
 					<div className='pl-8'>
 						<ConstructorElement
@@ -36,36 +41,14 @@ export const BurgerConstructor: FC = () => {
 						/>
 					</div>
 					<div className={s['components-main']}>
-						<IngredientConstructorElement
-							text={`${bun.name} (низ)`}
-							price={bun.price}
-							thumbnail={bun.image}
-						/>
-						<IngredientConstructorElement
-							text={`${bun.name} (низ)`}
-							price={bun.price}
-							thumbnail={bun.image}
-						/>
-						<IngredientConstructorElement
-							text={`${bun.name} (низ)`}
-							price={bun.price}
-							thumbnail={bun.image}
-						/>
-						<IngredientConstructorElement
-							text={`${bun.name} (низ)`}
-							price={bun.price}
-							thumbnail={bun.image}
-						/>
-						<IngredientConstructorElement
-							text={`${bun.name} (низ)`}
-							price={bun.price}
-							thumbnail={bun.image}
-						/>
-						<IngredientConstructorElement
-							text={`${bun.name} (низ)`}
-							price={bun.price}
-							thumbnail={bun.image}
-						/>
+						{mainComponents.map((item, index) => (
+							<IngredientConstructorElement
+								key={index}
+								text={`${item.name} (низ)`}
+								price={item.price}
+								thumbnail={item.image}
+							/>
+						))}
 					</div>
 					<div className='pl-8'>
 						<ConstructorElement
@@ -90,7 +73,7 @@ export const BurgerConstructor: FC = () => {
 						Оформить заказ
 					</Button>
 				</div>
-			</div>
+			</section>
 		</>
 	);
 };

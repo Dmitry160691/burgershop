@@ -1,10 +1,11 @@
 import { FC } from 'react';
 import s from './ingredient-category.module.scss';
 import { IngredientCard } from '@components/ingredient-card/ingredient-card';
+import { IngredientType } from '../../types/app.types';
 
 type IngredientCategoryProps = {
 	title: string;
-	items: any[];
+	items: IngredientType[];
 };
 
 export const IngredientCategory: FC<IngredientCategoryProps> = ({
