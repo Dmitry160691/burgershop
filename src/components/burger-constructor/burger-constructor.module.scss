@@ -3,8 +3,13 @@
     min-height: calc(100vh - 88px);
 }
 .components-main,
-.components-bun {
+.components-bun,
+.info {
     display: flex;
+}
+
+.components-main,
+.components-bun {
     flex-direction: column;
     gap: 16px;
 }
@@ -21,7 +26,6 @@
 
 .info {
     height: 64px;
-    display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 40px;

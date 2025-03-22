@@ -29,7 +29,7 @@ export const BurgerConstructor: FC<BurgerConstructorProps> = ({ data }) => {
 			{isOpenOrderDetails && (
 				<OrderDetails orderNumber={orderNumber} handleClose={handleClose} />
 			)}
-			<section className={`pl-4 pr-4 ${s.container}`}>
+			<section className={`pl-4 ${s.container}`}>
 				<div className={`mt-20 ${s['components-bun']}`}>
 					<div className='pl-8'>
 						<ConstructorElement
@@ -40,16 +40,16 @@ export const BurgerConstructor: FC<BurgerConstructorProps> = ({ data }) => {
 							thumbnail={bun.image}
 						/>
 					</div>
-					<div className={s['components-main']}>
+					<ul className={s['components-main']}>
 						{mainComponents.map((item, index) => (
 							<IngredientConstructorElement
 								key={index}
-								text={`${item.name} (низ)`}
+								text={`${item.name}`}
 								price={item.price}
 								thumbnail={item.image}
 							/>
 						))}
-					</div>
+					</ul>
 					<div className='pl-8'>
 						<ConstructorElement
 							type='bottom'

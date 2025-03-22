@@ -12,13 +12,13 @@ type ModalProps = {
 export const Modal: FC<ModalProps> = ({ handleClose, title, children }) => {
 	return (
 		<>
-			<ModalOverlay hendrler={handleClose} />
+			<ModalOverlay handleClose={handleClose} />
 			<div
 				className={`${s.container} pt-10 pr-10 pb-15 pl-10`}
 				onClick={() => console.log('тык')}>
 				<div className={s.header}>
 					<h1 className='text text_type_main-large'>{title}</h1>
-					<CloseIcon className={s.ikon} type='primary' onClick={handleClose} />
+					<CloseIcon className={s.icon} type='primary' onClick={handleClose} />
 				</div>
 				{children}
 			</div>

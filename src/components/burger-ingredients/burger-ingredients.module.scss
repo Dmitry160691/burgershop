@@ -9,6 +9,7 @@
 
 .container-ingredient-category {
     max-height: calc(100vh - 88px - 156px - 20px);
-	overflow-y: auto;
+	overflow-y: scroll;
 	scrollbar-width: thin;
+	box-sizing: border-box;
 }

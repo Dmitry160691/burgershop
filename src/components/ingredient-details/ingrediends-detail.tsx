@@ -26,7 +26,7 @@ export const IngredientDetail: FC<IngredientDetailProps> = ({
 		<Modal handleClose={handleClose} title='Детали ингредиента'>
 			<div className={s.container}>
 				<img src={imageSrc} alt={name} className={`${s.img} mb-4`} />
-				<span className='text_center text_type_main-medium mb-8'>{name}</span>
+				<span className='text_type_main-medium mb-8'>{name}</span>
 				<div className={s.compound}>
 					<CompoundBlock title='Калории, ккал' value={calories} />
 					<CompoundBlock title='Белки, г' value={proteins} />
