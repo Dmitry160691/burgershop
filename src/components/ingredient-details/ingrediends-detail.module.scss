@@ -1,0 +1,17 @@
+.img {
+    align-self: center;
+    width: 480px;
+    height: 240px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .compound {
+    align-self: center;
+    display: flex;
+    gap: 20px;
+  }

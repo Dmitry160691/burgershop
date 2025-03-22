@@ -1,21 +1,36 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import s from './ingredient-card.module.scss';
 import {
 	Counter,
 	CurrencyIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
+import { IngredientDetail } from '@components/ingredient-details/ingrediends-detail';
 
 type IngredientCardProps = {
 	item: any;
+	count?: number;
 };
 
-export const IngredientCard: FC<IngredientCardProps> = ({ item }) => {
+export const IngredientCard: FC<IngredientCardProps> = ({
+	item,
+	count = 1,
+}) => {
 	const { image, name, price } = item;
+	const [isOpenIngredientDetails, setIsOpenIngredientDetails] = useState(false);
+
+	const handleOpen = () => setIsOpenIngredientDetails(true);
+	const handleClose = () => setIsOpenIngredientDetails(false);
 
 	return (
 		<>
-			<div className={`mt-7 ${s['ingredient-card']}`}>
-				<Counter count={1} />
+			{isOpenIngredientDetails && (
+				<IngredientDetail
+					ingredient={item}
+					handleClose={handleClose}
+				/>
+			)}
+			<div className={`mt-7 ${s.card}`} onClick={handleOpen}>
+				<Counter count={count} />
 				<img src={image} alt={name} className='mb-1 ml-4 mr-4' />
 				<div className='mb-1'>
 					<span className='pr-2 text_type_digits-default'>{price}</span>

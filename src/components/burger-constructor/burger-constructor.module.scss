@@ -2,24 +2,24 @@
     width: 600px;
     min-height: calc(100vh - 88px);
 }
-.container-components-main,
-.container-components{
+.components-main,
+.components-bun {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-.container-components{
+.components-bun {
     height: 656px;
 }
 
-.container-components-main{
+.components-main {
     max-height: 464px;
     overflow-y: auto;
     scrollbar-width: thin;
 }
 
-.container-info{
+.info {
     height: 64px;
     display: flex;
     align-items: center;
