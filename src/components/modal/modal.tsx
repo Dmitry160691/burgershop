@@ -18,7 +18,7 @@ export const Modal: FC<ModalProps> = ({ handleClose, title, children }) => {
 				onClick={() => console.log('тык')}>
 				<div className={s.header}>
 					<h1 className='text text_type_main-large'>{title}</h1>
-					<CloseIcon type='primary' onClick={handleClose} />
+					<CloseIcon className={s.ikon} type='primary' onClick={handleClose} />
 				</div>
 				{children}
 			</div>
