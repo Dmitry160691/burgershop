@@ -3,18 +3,18 @@
     min-height: calc(100vh - 88px);
 }
 .components-main,
-.components-bun,
+.components-container,
 .info {
     display: flex;
 }
 
 .components-main,
-.components-bun {
+.components-container {
     flex-direction: column;
     gap: 16px;
 }
 
-.components-bun {
+.components-container {
     height: 656px;
 }
 

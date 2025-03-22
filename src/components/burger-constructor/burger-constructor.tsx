@@ -30,7 +30,7 @@ export const BurgerConstructor: FC<BurgerConstructorProps> = ({ data }) => {
 				<OrderDetails orderNumber={orderNumber} handleClose={handleClose} />
 			)}
 			<section className={`pl-4 ${s.container}`}>
-				<div className={`mt-20 ${s['components-bun']}`}>
+				<div className={`mt-20 ${s['components-container']}`}>
 					<div className='pl-8'>
 						<ConstructorElement
 							type='top'
