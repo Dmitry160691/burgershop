@@ -25,10 +25,7 @@ export const IngredientCard: FC<IngredientCardProps> = ({
 	return (
 		<>
 			{isOpenIngredientDetails && (
-				<IngredientDetail
-					ingredient={item}
-					handleClose={handleClose}
-				/>
+				<IngredientDetail ingredient={item} handleClose={handleClose} />
 			)}
 			<div className={`mt-7 ${s.card}`} onClick={handleOpen}>
 				<Counter count={count} />
