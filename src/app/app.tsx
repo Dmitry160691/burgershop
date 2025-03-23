@@ -9,12 +9,19 @@ import { TailSpin } from 'react-loader-spinner';
 export const App = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [data, setData] = useState([]);
+	const [isError, setIsError] = useState(false);
 
 	useEffect(() => {
 		const fetch = async () => {
-			const result = await getIngredients();
-			setData(result.data);
-			setIsLoading(false);
+			try {
+				const result = await getIngredients();
+				setData(result.data);
+				setIsLoading(false);
+			} catch (error) {
+				console.error('Ошибка при получении ингредиентов:', error);
+				setIsError(true);
+				setIsLoading(false);
+			}
 		};
 		fetch();
 	}, []);
@@ -29,6 +36,8 @@ export const App = () => {
 				radius='1'
 			/>
 		</div>
+	) : isError ? (
+		<div className={`${s.error} text_type_main-large`}>Ой, сломалось...</div>
 	) : (
 		<>
 			<AppHeader />

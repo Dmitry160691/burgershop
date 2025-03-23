@@ -8,6 +8,8 @@ import { IngredientConstructorElement } from '@components/ingredient-constructor
 import { FC, useState } from 'react';
 import { OrderDetails } from '@components/order-details/order-datails';
 import { IngredientType } from '../../types/app.types';
+import { Modal } from '@components/modal/modal';
+import { useModal } from '../../hooks/useModal';
 
 type BurgerConstructorProps = {
 	data: IngredientType[];
@@ -18,16 +20,15 @@ export const BurgerConstructor: FC<BurgerConstructorProps> = ({ data }) => {
 	const mainComponents = data.filter((v) => v.type !== 'bun');
 	const orderNumber = '034536';
 
-	const [isOpenOrderDetails, setIsOpenOrderDetails] = useState(false);
-
-	const onOpen = () => setIsOpenOrderDetails(true);
-	const onClose = () => setIsOpenOrderDetails(false);
+	const { isModalOpen, openModal, closeModal } = useModal();
 
 	if (!bun) return null;
 	return (
 		<>
-			{isOpenOrderDetails && (
-				<OrderDetails orderNumber={orderNumber} onClose={onClose} />
+			{isModalOpen && (
+				<Modal onClose={closeModal}>
+					<OrderDetails orderNumber={orderNumber} />
+				</Modal>
 			)}
 			<section className={`pl-4 ${s.container}`}>
 				<div className={`mt-20 ${s['components-container']}`}>
@@ -69,7 +70,7 @@ export const BurgerConstructor: FC<BurgerConstructorProps> = ({ data }) => {
 						htmlType='button'
 						size='large'
 						type='primary'
-						onClick={onOpen}>
+						onClick={openModal}>
 						Оформить заказ
 					</Button>
 				</div>

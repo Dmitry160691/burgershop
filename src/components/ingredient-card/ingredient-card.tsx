@@ -6,6 +6,8 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { IngredientDetail } from '@components/ingredient-details/ingrediends-detail';
 import { IngredientType } from '../../types/app.types';
+import { Modal } from '@components/modal/modal';
+import { useModal } from '../../hooks/useModal';
 
 type IngredientCardProps = {
 	item: IngredientType;
@@ -17,17 +19,17 @@ export const IngredientCard: FC<IngredientCardProps> = ({
 	count = 1,
 }) => {
 	const { image, name, price } = item;
-	const [isOpenIngredientDetails, setIsOpenIngredientDetails] = useState(false);
 
-	const onOpen = () => setIsOpenIngredientDetails(true);
-	const onClose = () => setIsOpenIngredientDetails(false);
+	const { isModalOpen, openModal, closeModal } = useModal();
 
 	return (
 		<>
-			{isOpenIngredientDetails && (
-				<IngredientDetail ingredient={item} onClose={onClose} />
+			{isModalOpen && (
+				<Modal onClose={closeModal} title='Детали ингредиента'>
+					<IngredientDetail ingredient={item} />
+				</Modal>
 			)}
-			<div className={`mt-7 ${s.card}`} onClick={onOpen}>
+			<div className={`mt-7 ${s.card}`} onClick={openModal}>
 				<Counter count={count} />
 				<img src={image} alt={name} className='mb-1 ml-4 mr-4' />
 				<div className='mb-1'>
