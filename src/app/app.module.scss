@@ -1,27 +1,32 @@
-.logo {
-	height: 6em;
-	width: auto;
-	padding: 1.5em;
-	will-change: filter;
-}
-.logo:hover {
-	filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react {
-	animation: logo-spin infinite 20s linear;
+.container,
+.error,
+.blocks-wrapper {
+	display: flex;
 }
 
-.card {
-	padding: 2em;
-	display: flex;
+.container {
+	gap: 40px;
+}
+
+.blocks-wrapper,
+.error {
+	left: 0;
+	top: 0;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	align-items: center;
 	justify-content: center;
 }
 
-@keyframes logo-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: rgb(47, 47, 55);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: rgb(133, 133, 173);
 }

@@ -1,0 +1,15 @@
+.container {
+	width: 600px;
+	min-height: calc(100vh - 88px);
+}
+
+.container-tabs {
+	display: flex;
+}
+
+.container-ingredient-category {
+	max-height: calc(100vh - 88px - 156px - 20px);
+	overflow-y: auto;
+	scrollbar-width: thin;
+	box-sizing: border-box;
+}

@@ -1,0 +1,24 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	width: 720px;
+	border-radius: 40px;
+	border: 1px solid rgba(76, 76, 255, 0.2);
+	background: rgba(28, 28, 33, 1);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 64px;
+}
+
+.icon {
+	cursor: pointer;
+}

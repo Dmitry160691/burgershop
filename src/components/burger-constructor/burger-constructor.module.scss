@@ -1,0 +1,32 @@
+.container {
+	width: 600px;
+	min-height: calc(100vh - 88px);
+}
+.components-main,
+.components-container,
+.info {
+	display: flex;
+}
+
+.components-main,
+.components-container {
+	flex-direction: column;
+	gap: 16px;
+}
+
+.components-container {
+	height: 656px;
+}
+
+.components-main {
+	max-height: 464px;
+	overflow-y: auto;
+	scrollbar-width: thin;
+}
+
+.info {
+	height: 64px;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 40px;
+}

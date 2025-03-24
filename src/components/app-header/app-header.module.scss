@@ -1,0 +1,25 @@
+.header,
+.left-block,
+.right-block {
+	display: flex;
+}
+
+.header {
+	top: 40;
+	height: 88px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.left-block,
+.right-block {
+	width: 400px;
+}
+
+.left-block {
+	justify-content: start;
+}
+
+.right-block {
+	justify-content: end;
+}
