@@ -30,3 +30,22 @@
 	justify-content: flex-end;
 	gap: 40px;
 }
+
+.components-list {
+	max-width: 536px;
+	min-height: 80px;
+	margin-left: 32px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: var(--common-border-radius-s);
+	background: var(--background-element);
+}
+
+.top {
+	border-radius: var(--top-constructor-item-border-radius);
+}
+
+.bottom {
+	border-radius: var(--bottom-constructor-item-border-radius);
+}

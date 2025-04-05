@@ -1,13 +1,11 @@
 import { FC } from 'react';
 import s from './ingrediends-detail.module.scss';
 import { CompoundBlock } from '@components/compound-block/compound-block';
-import { IngredientType } from '../../types/app.types';
+import { useAppSelector } from '@services/store';
 
-type IngredientDetailProps = {
-	ingredient: IngredientType;
-};
-
-export const IngredientDetail: FC<IngredientDetailProps> = ({ ingredient }) => {
+export const IngredientDetail: FC = () => {
+	const { selectIngredient } = useAppSelector((state) => state.view);
+	if (!selectIngredient) return null;
 	const {
 		image_large: imageSrc,
 		name,
@@ -15,7 +13,7 @@ export const IngredientDetail: FC<IngredientDetailProps> = ({ ingredient }) => {
 		proteins,
 		fat,
 		carbohydrates,
-	} = ingredient;
+	} = selectIngredient;
 
 	return (
 		<div className={s.container}>
