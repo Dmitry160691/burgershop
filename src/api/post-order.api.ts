@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { request } from './request';
+import { request } from '@utils/request';
 
 type RequestData = {
 	ingredients: string[];
