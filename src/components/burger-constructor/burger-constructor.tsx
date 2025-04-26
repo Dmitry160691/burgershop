@@ -25,10 +25,14 @@ import {
 	plusCount,
 } from '@services/slices/ingredientsSlice';
 import { postOrder } from '../../api/post-order.api';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { getCookie } from '@utils/cookie';
 
 export const BurgerConstructor: FC = () => {
 	const { data } = useAppSelector((state) => state.cart);
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+	const location = useLocation();
 
 	const { isModalOpen, openModal, closeModal } = useModal();
 
@@ -143,10 +147,15 @@ export const BurgerConstructor: FC = () => {
 							<CurrencyIcon type={'primary'} />
 						</div>
 						<Button
+							disabled={!data.length}
 							htmlType='button'
 							size='large'
 							type='primary'
-							onClick={handleSubmitOrder}>
+							onClick={
+								!getCookie('token')
+									? () => navigate('/login', { state: { from: location } })
+									: handleSubmitOrder
+							}>
 							Оформить заказ
 						</Button>
 					</div>

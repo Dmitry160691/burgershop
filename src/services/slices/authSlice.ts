@@ -35,6 +35,7 @@ const authSlice = createSlice({
 		builder
 			.addCase(register.pending, (state) => {
 				state.isError = false;
+				state.isLoading = true;
 			})
 			.addCase(register.rejected, (state, { error }) => {
 				state.isLoading = false;
@@ -54,6 +55,7 @@ const authSlice = createSlice({
 
 			.addCase(login.pending, (state) => {
 				state.isError = false;
+				state.isLoading = true;
 			})
 			.addCase(login.rejected, (state, { error }) => {
 				state.isLoading = false;
@@ -89,6 +91,7 @@ const authSlice = createSlice({
 
 			.addCase(forgotPassword.pending, (state) => {
 				state.isError = false;
+				state.isLoading = true;
 			})
 			.addCase(forgotPassword.rejected, (state, { error }) => {
 				state.isLoading = false;
@@ -120,6 +123,7 @@ const authSlice = createSlice({
 
 			.addCase(getUser.pending, (state) => {
 				state.isError = false;
+				state.isLoading = true;
 			})
 			.addCase(getUser.rejected, (state, { error }) => {
 				state.isLoading = false;
@@ -139,6 +143,7 @@ const authSlice = createSlice({
 
 			.addCase(updateUser.pending, (state) => {
 				state.isError = false;
+				state.isLoading = true;
 			})
 			.addCase(updateUser.rejected, (state, { error }) => {
 				state.isLoading = false;
