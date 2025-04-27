@@ -9,11 +9,12 @@ import {
 import { useAppDispatch, useAppSelector } from '@services/store';
 import { register } from '../../api/auth.api';
 import { RequestRegister } from '../../types/app.types';
+import s from './register.module.scss';
 
 export const Register = () => {
 	const dispatch = useAppDispatch();
 
-	const { isError, errorMessage } = useAppSelector((state) => state.auth);
+	const { errorMessage } = useAppSelector((state) => state.auth);
 
 	const [value, setValue] = useState<RequestRegister>({
 		email: '',
@@ -37,8 +38,8 @@ export const Register = () => {
 	};
 
 	return (
-		<div className={''}>
-			<form className='mb-20' onSubmit={handleSubmit}>
+		<div className={s.container}>
+			<form className={`${s.form} mb-20`} onSubmit={handleSubmit}>
 				<h2 className='text text_type_main-medium mb-6'>Регистрация</h2>
 				<Input
 					type='text'
@@ -61,12 +62,12 @@ export const Register = () => {
 					name='password'
 					autoComplete='password'
 				/>
-				{isError && <p className={''}>{errorMessage}</p>}
+				{errorMessage && <p className={''}>{errorMessage}</p>}
 				<Button htmlType='submit' type='primary' size='medium'>
 					Зарегистрироваться
 				</Button>
 			</form>
-			<div>
+			<div className={s.link}>
 				<span className='text text_type_main-default text_color_inactive mr-2'>
 					Уже зарегистрированы?
 				</span>

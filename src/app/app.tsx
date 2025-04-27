@@ -15,6 +15,12 @@ import { Ingredient } from '@pages/ingredient/ingredient';
 import { Orders } from '@pages/orders/orders';
 import { ProfileLayout } from '@pages/profile-layout/profile-layout';
 import { Profile } from '@pages/profile/profile';
+import {
+	OnlyAuth,
+	OnlyUnAuth,
+} from '@components/protected-route/protected-route';
+import { useEffect } from 'react';
+import { checkAuth } from '@utils/check-auth';
 
 export const App = () => {
 	const location = useLocation();
@@ -27,41 +33,33 @@ export const App = () => {
 		dispatch(removeIngredient());
 	};
 
+	useEffect(() => {
+		dispatch(checkAuth());
+	}, [dispatch]);
+
 	return (
 		<>
 			<AppHeader />
 			<main className={s.container}>
 				<Routes location={background || location}>
 					<Route path='/' element={<Home />} />
-					<Route
-						path='/login'
-						//TODO
-						element={<Login />}
-					/>
+					<Route path='/login' element={<OnlyUnAuth component={<Login />} />} />
 					<Route
 						path='/register'
-						//TODO
-						element={<Register />}
+						element={<OnlyUnAuth component={<Register />} />}
 					/>
-					<Route path='/forgot-password' element={<ForgotPassword />} />
 					<Route
-						path='/reset-password'
-						//TODO
-						element={<ResetPassword />}
+						path='/forgot-password'
+						element={<OnlyUnAuth component={<ForgotPassword />} />}
 					/>
+					<Route path='/reset-password' element={<ResetPassword />} />
 					<Route
 						path='/profile'
-						//TODO
-						element={<ProfileLayout />}>
-						<Route
-							index
-							//TODO
-							element={<Profile />}
-						/>
+						element={<OnlyAuth component={<ProfileLayout />} />}>
+						<Route index element={<OnlyAuth component={<Profile />} />} />
 						<Route
 							path='orders'
-							//TODO
-							element={<Orders />}
+							element={<OnlyAuth component={<Orders />} />}
 						/>
 					</Route>
 					<Route path='/ingredients/:id' element={<Ingredient />} />

@@ -8,14 +8,13 @@ import {
 import { useAppDispatch, useAppSelector } from '@services/store';
 import { resetPassword } from '../../api/auth.api';
 import { RequestReset } from '../../types/app.types';
+import s from './reset-password.module.scss';
 
 export const ResetPassword = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
-	const { isLoading, isError, errorMessage } = useAppSelector(
-		(state) => state.auth
-	);
+	const { isLoading, errorMessage } = useAppSelector((state) => state.auth);
 
 	const [values, setValues] = useState<RequestReset>({
 		password: '',
@@ -47,8 +46,8 @@ export const ResetPassword = () => {
 	}, [location, navigate]);
 
 	return (
-		<div className={''}>
-			<form className='mb-20' onSubmit={handleSubmit}>
+		<div className={s.container}>
+			<form className={`${s.form} mb-20`} onSubmit={handleSubmit}>
 				<h2 className='text text_type_main-medium mb-6'>
 					Восстановление пароля
 				</h2>
@@ -65,17 +64,17 @@ export const ResetPassword = () => {
 					onChange={onInputChange}
 					value={values.token}
 					name='token'
-					error={isError}
+					error={!!errorMessage}
 					errorText={errorMessage || 'Ошибка!'}
 					size='default'
 					autoComplete='one-time-code'
 				/>
-				{isError && <p className={''}>{errorMessage}</p>}
+				{errorMessage && <p className={''}>{errorMessage}</p>}
 				<Button htmlType='submit'>
 					{isLoading ? 'Сохранение...' : 'Сохранить'}
 				</Button>
 			</form>
-			<div>
+			<div className={s.link}>
 				<span className='text text_type_main-default text_color_inactive mr-2'>
 					Вспомнили пароль?
 				</span>

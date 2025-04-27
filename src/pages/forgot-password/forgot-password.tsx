@@ -13,9 +13,7 @@ export const ForgotPassword = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	const { isLoading, isError, errorMessage } = useAppSelector(
-		(state) => state.auth
-	);
+	const { isLoading, errorMessage } = useAppSelector((state) => state.auth);
 
 	const [value, setValue] = useState<RequestForgotData>({ email: '' });
 
@@ -38,8 +36,8 @@ export const ForgotPassword = () => {
 	};
 
 	return (
-		<div className={s.form}>
-			<form className='mb-20' onSubmit={handleSubmit}>
+		<div className={s.container}>
+			<form className={`${s.form} mb-20`} onSubmit={handleSubmit}>
 				<h2 className='text text_type_main-medium mb-6'>
 					Восстановление пароля
 				</h2>
@@ -51,12 +49,12 @@ export const ForgotPassword = () => {
 					isIcon={false}
 					autoComplete='email'
 				/>
-				{isError && <p className={s.error_message}>{errorMessage}</p>}
+				{errorMessage && <p>{errorMessage}</p>}
 				<Button htmlType='submit'>
 					{isLoading ? 'Загрузка...' : 'Восстановить'}
 				</Button>
 			</form>
-			<div>
+			<div className={s.link}>
 				<span className='text text_type_main-default text_color_inactive mr-2'>
 					Вспомнили пароль?
 				</span>

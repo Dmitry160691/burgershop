@@ -14,7 +14,6 @@ export const authMiddleware = (data: ResponseAuthData) => {
 	const { accessToken, refreshToken } = data;
 
 	const [_, token] = accessToken.split(' ');
-	console.log(token);
 	setCookie('token', token, {
 		expires: 20 * 60,
 	});

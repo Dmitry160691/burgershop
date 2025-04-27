@@ -1,0 +1,22 @@
+.ingredient {
+	width: 640px;
+	height: 575px;
+	display: flex;
+	flex-direction: column;
+}
+
+.title {
+	text-align: center;
+}
+
+.container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

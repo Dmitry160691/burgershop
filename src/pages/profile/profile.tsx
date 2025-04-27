@@ -13,7 +13,7 @@ import s from './profile.module.scss';
 export const Profile = () => {
 	const dispatch = useAppDispatch();
 
-	const { user, isLoading } = useAppSelector((state) => state.auth);
+	const { user } = useAppSelector((state) => state.auth);
 
 	const [value, setValue] = useState<RequestUserUpdate>({
 		name: user ? user.name : '',
@@ -48,12 +48,8 @@ export const Profile = () => {
 		setChanged(false);
 	};
 
-	if (isLoading) return <div>Загрузка...</div>;
-	if (!user)
-		return <div>Пользователь не найден. Пожалуйста, войдите в систему.</div>;
-
 	return (
-		<form className={'ml-15'} onSubmit={handleSubmit}>
+		<form className={s.form} onSubmit={handleSubmit}>
 			<Input
 				value={value.name}
 				onChange={onInputChange}
@@ -75,7 +71,7 @@ export const Profile = () => {
 				icon='EditIcon'
 			/>
 			{isChanged && (
-				<div className={s.editProfileForm__buttons}>
+				<div className={s.buttons}>
 					<Button htmlType='button' type='secondary' onClick={handleCancel}>
 						Отмена
 					</Button>

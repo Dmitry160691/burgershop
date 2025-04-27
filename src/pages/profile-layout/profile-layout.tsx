@@ -1,18 +1,24 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import s from './profile-layout.module.scss';
 import { useAppDispatch } from '@services/store';
 import { logout } from '../../api/auth.api';
 
 export const ProfileLayout = () => {
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+
 	const onExit = () => {
-		dispatch(logout());
+		dispatch(logout()).then((response) => {
+			if (response.meta.requestStatus === 'fulfilled') {
+				navigate('/login', { replace: true });
+			}
+		});
 	};
 
 	return (
-		<div className={s.wrapper}>
-			<div>
-				<ul className={s.navigation}>
+		<div className={s.container}>
+			<div className={s.left}>
+				<ul className={s.navigate}>
 					<li className={s.link}>
 						<NavLink to='/profile' end>
 							{({ isActive }) => (
