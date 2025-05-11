@@ -2,7 +2,6 @@ import { FC, useEffect } from 'react';
 import s from './ingredient.module.scss';
 import { useAppDispatch, useAppSelector } from '@services/store';
 import { Link, useParams } from 'react-router-dom';
-import { getIngredients } from '../../api/get-ingredients.api ';
 import { addIngredient } from '@services/slices/viewSlice';
 import { IngredientDetail } from '@components/ingredient-details/ingrediends-detail';
 
@@ -12,10 +11,6 @@ export const Ingredient: FC = () => {
 	const { data } = useAppSelector((state) => state.ingredients);
 
 	const dispatch = useAppDispatch();
-
-	useEffect(() => {
-		dispatch(getIngredients());
-	}, []);
 
 	useEffect(() => {
 		if (data.length) {

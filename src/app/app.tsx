@@ -21,6 +21,7 @@ import {
 } from '@components/protected-route/protected-route';
 import { useEffect } from 'react';
 import { checkAuth } from '@utils/check-auth';
+import { getIngredients } from '../api/get-ingredients.api ';
 
 export const App = () => {
 	const location = useLocation();
@@ -32,6 +33,10 @@ export const App = () => {
 		navigate(-1);
 		dispatch(removeIngredient());
 	};
+
+	useEffect(() => {
+		dispatch(getIngredients());
+	}, []);
 
 	useEffect(() => {
 		dispatch(checkAuth());

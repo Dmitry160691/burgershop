@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
 import {
 	Button,
@@ -8,15 +8,15 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useAppDispatch, useAppSelector } from '@services/store';
 import { register } from '../../api/auth.api';
-import { RequestRegister } from '../../types/app.types';
 import s from './register.module.scss';
+import { useForm } from '../../hooks/useForm';
 
 export const Register = () => {
 	const dispatch = useAppDispatch();
 
 	const { errorMessage } = useAppSelector((state) => state.auth);
 
-	const [value, setValue] = useState<RequestRegister>({
+	const { values, handleChange } = useForm({
 		email: '',
 		password: '',
 		name: '',
@@ -24,17 +24,7 @@ export const Register = () => {
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-
-		dispatch(register(value));
-	};
-
-	const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-
-		setValue((prevData) => ({
-			...prevData,
-			[name]: value,
-		}));
+		dispatch(register(values));
 	};
 
 	return (
@@ -44,20 +34,20 @@ export const Register = () => {
 				<Input
 					type='text'
 					placeholder='Имя'
-					onChange={onInputChange}
-					value={value.name}
+					onChange={handleChange}
+					value={values.name}
 					name='name'
 				/>
 				<EmailInput
 					name='email'
-					value={value.email}
+					value={values.email}
 					placeholder='Email'
-					onChange={onInputChange}
+					onChange={handleChange}
 					autoComplete='email'
 				/>
 				<PasswordInput
-					onChange={onInputChange}
-					value={value.password}
+					onChange={handleChange}
+					value={values.password}
 					placeholder='Пароль'
 					name='password'
 					autoComplete='password'

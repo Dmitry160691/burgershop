@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import {
 	Button,
@@ -7,8 +7,8 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useAppDispatch, useAppSelector } from '@services/store';
 import { resetPassword } from '../../api/auth.api';
-import { RequestReset } from '../../types/app.types';
 import s from './reset-password.module.scss';
+import { useForm } from '../../hooks/useForm';
 
 export const ResetPassword = () => {
 	const dispatch = useAppDispatch();
@@ -16,7 +16,7 @@ export const ResetPassword = () => {
 	const location = useLocation();
 	const { isLoading, errorMessage } = useAppSelector((state) => state.auth);
 
-	const [values, setValues] = useState<RequestReset>({
+	const { values, handleChange } = useForm({
 		password: '',
 		token: '',
 	});
@@ -28,15 +28,6 @@ export const ResetPassword = () => {
 				navigate('/login', { replace: true });
 			}
 		});
-	};
-
-	const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-
-		setValues((prevData) => ({
-			...prevData,
-			[name]: value,
-		}));
 	};
 
 	useEffect(() => {
@@ -52,7 +43,7 @@ export const ResetPassword = () => {
 					Восстановление пароля
 				</h2>
 				<PasswordInput
-					onChange={onInputChange}
+					onChange={handleChange}
 					value={values.password}
 					name='password'
 					placeholder='Введите новый пароль'
@@ -61,7 +52,7 @@ export const ResetPassword = () => {
 				<Input
 					type='text'
 					placeholder='Введите код из письма'
-					onChange={onInputChange}
+					onChange={handleChange}
 					value={values.token}
 					name='token'
 					error={!!errorMessage}

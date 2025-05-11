@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router';
 import {
 	Button,
@@ -7,7 +7,7 @@ import {
 import s from './forgot-password.module.scss';
 import { useAppDispatch, useAppSelector } from '@services/store';
 import { forgotPassword } from '../../api/auth.api';
-import { RequestForgotData } from '../../types/app.types';
+import { useForm } from '../../hooks/useForm';
 
 export const ForgotPassword = () => {
 	const dispatch = useAppDispatch();
@@ -15,24 +15,15 @@ export const ForgotPassword = () => {
 
 	const { isLoading, errorMessage } = useAppSelector((state) => state.auth);
 
-	const [value, setValue] = useState<RequestForgotData>({ email: '' });
+	const { values, handleChange } = useForm({ email: '' });
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		dispatch(forgotPassword(value)).then((response) => {
+		dispatch(forgotPassword(values)).then((response) => {
 			if (response.meta.requestStatus === 'fulfilled') {
 				navigate('/reset-password', { state: { isForgotPage: true } });
 			}
 		});
-	};
-
-	const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-
-		setValue((prevData) => ({
-			...prevData,
-			[name]: value,
-		}));
 	};
 
 	return (
@@ -43,9 +34,9 @@ export const ForgotPassword = () => {
 				</h2>
 				<EmailInput
 					name='email'
-					value={value.email}
+					value={values.email}
 					placeholder='Укажите email'
-					onChange={onInputChange}
+					onChange={handleChange}
 					isIcon={false}
 					autoComplete='email'
 				/>

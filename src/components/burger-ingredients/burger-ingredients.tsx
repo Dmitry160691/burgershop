@@ -1,9 +1,8 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import s from './burger-ingredients.module.scss';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import { IngredientCategory } from '@components/ingredient-category/ingredient-category';
-import { useAppDispatch, useAppSelector } from '@services/store';
-import { getIngredients } from '../../api/get-ingredients.api ';
+import { useAppSelector } from '@services/store';
 
 export const BurgerIngredients: FC = () => {
 	const [current, setCurrent] = useState('bun');
@@ -26,12 +25,6 @@ export const BurgerIngredients: FC = () => {
 	const { data, isLoading, isError } = useAppSelector(
 		(state) => state.ingredients
 	);
-
-	const dispatch = useAppDispatch();
-
-	useEffect(() => {
-		dispatch(getIngredients());
-	}, [dispatch]);
 
 	const handleScroll = (event: React.UIEvent<HTMLElement>) => {
 		const containerTop = event.currentTarget.getBoundingClientRect().top;

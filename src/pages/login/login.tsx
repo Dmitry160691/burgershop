@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import {
 	Button,
@@ -7,8 +7,8 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useAppDispatch, useAppSelector } from '@services/store';
 import { login } from '../../api/auth.api';
-import { RequestLogin } from '../../types/app.types';
 import s from './login.module.scss';
+import { useForm } from '../../hooks/useForm';
 
 export const Login = () => {
 	const dispatch = useAppDispatch();
@@ -17,26 +17,14 @@ export const Login = () => {
 
 	const { isLoading, errorMessage } = useAppSelector((state) => state.auth);
 
-	const [value, setValue] = useState<RequestLogin>({
-		email: '',
-		password: '',
-	});
+	const { values, handleChange } = useForm({ email: '', password: '' });
 
 	const from = location.state?.from?.pathname || '/profile';
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		dispatch(login(value));
+		dispatch(login(values));
 		navigate(from, { replace: true });
-	};
-
-	const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-
-		setValue((prevData) => ({
-			...prevData,
-			[name]: value,
-		}));
 	};
 
 	return (
@@ -45,14 +33,14 @@ export const Login = () => {
 				<h2 className='text text_type_main-medium'>Вход</h2>
 				<EmailInput
 					name='email'
-					value={value.email}
+					value={values.email}
 					placeholder='Email'
-					onChange={onInputChange}
+					onChange={handleChange}
 					autoComplete='email'
 				/>
 				<PasswordInput
-					onChange={onInputChange}
-					value={value.password}
+					onChange={handleChange}
+					value={values.password}
 					placeholder='Пароль'
 					name='password'
 					autoComplete='password'
