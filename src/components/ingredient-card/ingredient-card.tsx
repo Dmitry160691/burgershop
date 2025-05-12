@@ -4,23 +4,21 @@ import {
 	Counter,
 	CurrencyIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
-import { IngredientDetail } from '@components/ingredient-details/ingrediends-detail';
 import { IngredientType } from '../../types/app.types';
-import { Modal } from '@components/modal/modal';
-import { useModal } from '../../hooks/useModal';
 import { useDrag } from 'react-dnd';
 import { useAppDispatch } from '@services/store';
-import { addIngredient, removeIngredient } from '@services/slices/viewSlice';
+import { addIngredient } from '@services/slices/viewSlice';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 type IngredientCardProps = {
 	ingredient: IngredientType;
 };
 
 export const IngredientCard: FC<IngredientCardProps> = ({ ingredient }) => {
-	const { image, name, price, __v: count } = ingredient;
+	const { image, name, price, __v: count, _id: id } = ingredient;
 
-	const { isModalOpen, openModal, closeModal } = useModal();
-
+	const navigate = useNavigate();
+	const location = useLocation();
 	const dispatch = useAppDispatch();
 	const [, drag] = useDrag({
 		type: 'ingredient',
@@ -28,22 +26,14 @@ export const IngredientCard: FC<IngredientCardProps> = ({ ingredient }) => {
 	});
 
 	const handleOpenModal = () => {
-		openModal();
+		navigate(`/ingredients/${id}`, {
+			state: { background: location },
+		});
 		dispatch(addIngredient(ingredient));
-	};
-
-	const handleCloseModal = () => {
-		closeModal();
-		dispatch(removeIngredient());
 	};
 
 	return (
 		<>
-			{isModalOpen && (
-				<Modal onClose={handleCloseModal} title='Детали ингредиента'>
-					<IngredientDetail />
-				</Modal>
-			)}
 			<div className={`mt-7 ${s.card}`} onClick={handleOpenModal} ref={drag}>
 				{!!count && <Counter count={count} />}
 				<img src={image} alt={name} className='mb-1 ml-4 mr-4' />
