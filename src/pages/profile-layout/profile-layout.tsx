@@ -2,8 +2,9 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import s from './profile-layout.module.scss';
 import { useAppDispatch } from '@services/store';
 import { logout } from '../../api/auth.api';
+import { FC } from 'react';
 
-export const ProfileLayout = () => {
+export const ProfileLayout: FC = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 

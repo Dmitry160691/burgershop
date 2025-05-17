@@ -5,7 +5,7 @@ import { IngredientCategory } from '@components/ingredient-category/ingredient-c
 import { useAppSelector } from '@services/store';
 
 export const BurgerIngredients: FC = () => {
-	const [current, setCurrent] = useState('bun');
+	const [current, setCurrent] = useState<string>('bun');
 
 	const tabs = [
 		{
