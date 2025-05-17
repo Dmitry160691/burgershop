@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router';
 import {
 	Button,
@@ -11,7 +11,7 @@ import { register } from '../../api/auth.api';
 import s from './register.module.scss';
 import { useForm } from '../../hooks/useForm';
 
-export const Register = () => {
+export const Register: FC = () => {
 	const dispatch = useAppDispatch();
 
 	const { errorMessage } = useAppSelector((state) => state.auth);

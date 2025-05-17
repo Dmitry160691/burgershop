@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import {
 	Button,
@@ -10,7 +10,7 @@ import { login } from '../../api/auth.api';
 import s from './login.module.scss';
 import { useForm } from '../../hooks/useForm';
 
-export const Login = () => {
+export const Login: FC = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();

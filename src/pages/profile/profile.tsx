@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import {
 	Button,
 	EmailInput,
@@ -10,7 +10,7 @@ import { updateUser } from '../../api/user.api';
 import s from './profile.module.scss';
 import { useForm } from '../../hooks/useForm';
 
-export const Profile = () => {
+export const Profile: FC = () => {
 	const dispatch = useAppDispatch();
 
 	const { user } = useAppSelector((state) => state.auth);
@@ -21,7 +21,7 @@ export const Profile = () => {
 		password: '',
 	});
 
-	const [isChanged, setChanged] = useState(false);
+	const [isChanged, setChanged] = useState<boolean>(false);
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
