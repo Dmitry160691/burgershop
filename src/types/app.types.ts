@@ -44,26 +44,13 @@ export type ResponseUser = {
 	user: UserTypeWithoutPassword;
 };
 
-export type RequestUserUpdate = {
-	name: string;
-	email: string;
-	password: string;
-};
+export type RequestUserUpdate = UserType;
 
-export type RequestRegister = {
-	email: string;
-	password: string;
-	name: string;
-};
+export type RequestRegister = UserType;
 
-export type RequestLogin = {
-	email: string;
-	password: string;
-};
+export type RequestLogin = Omit<UserType, 'name'>;
 
-export type RequestForgotData = {
-	email: string;
-};
+export type RequestForgotData = Pick<UserType, 'email'>;
 
 export type RequestReset = {
 	password: string;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import {
 	Button,
@@ -10,7 +10,7 @@ import { resetPassword } from '../../api/auth.api';
 import s from './reset-password.module.scss';
 import { useForm } from '../../hooks/useForm';
 
-export const ResetPassword = () => {
+export const ResetPassword: FC = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();

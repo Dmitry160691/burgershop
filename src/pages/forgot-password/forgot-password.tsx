@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link, useNavigate } from 'react-router';
 import {
 	Button,
@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from '@services/store';
 import { forgotPassword } from '../../api/auth.api';
 import { useForm } from '../../hooks/useForm';
 
-export const ForgotPassword = () => {
+export const ForgotPassword: FC = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import {
 	Button,
 	EmailInput,
@@ -10,7 +10,7 @@ import { updateUser } from '../../api/user.api';
 import s from './profile.module.scss';
 import { useForm } from '../../hooks/useForm';
 
-export const Profile = () => {
+export const Profile: FC = () => {
 	const dispatch = useAppDispatch();
 
 	const { user } = useAppSelector((state) => state.auth);
