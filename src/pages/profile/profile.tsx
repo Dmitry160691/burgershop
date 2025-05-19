@@ -21,7 +21,7 @@ export const Profile: FC = () => {
 		password: '',
 	});
 
-	const [isChanged, setChanged] = useState<boolean>(false);
+	const [isChanged, setChanged] = useState(false);
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
