@@ -14,7 +14,7 @@ export const AppHeader: FC = () => {
 		<header className={s.header}>
 			<div className={s['left-block']}>
 				<MenuItem icon={BurgerIcon} text='Конструктор' path='/' />
-				<MenuItem icon={ListIcon} text='Лента заказов' path='/profile/orders' />
+				<MenuItem icon={ListIcon} text='Лента заказов' path='/feed' />
 			</div>
 
 			<Link to='/'>

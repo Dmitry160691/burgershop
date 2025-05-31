@@ -1,4 +1,8 @@
-export const checkResponse = (res: Response) => {
+export const checkResponse = async (res: Response) => {
 	if (res.ok) return res.json();
-	res.json().then((err) => Promise.reject(err));
+	if (res.status === 403 || res.status === 401) {
+        const error = await res.json();
+        return Promise.reject(error);
+    }
+    return Promise.reject(`Ошибка ${res.status}`);
 };

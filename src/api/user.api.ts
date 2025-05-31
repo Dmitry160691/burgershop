@@ -4,7 +4,7 @@ import { RequestUserUpdate, ResponseUser } from '../types/app.types';
 import { getCookie } from '@utils/cookie';
 import { authMiddleware } from './auth.api';
 
-const getToken = async () => {
+export const getToken = async () => {
 	const token = getCookie('refresh');
 
 	return await request('/auth/token', {

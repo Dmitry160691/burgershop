@@ -22,6 +22,9 @@ import {
 import { useEffect } from 'react';
 import { checkAuth } from '@utils/check-auth';
 import { getIngredients } from '../api/get-ingredients.api ';
+import { Feed } from '@pages/feed/feed';
+import { OrderPage } from '@pages/order-page/order-page';
+import { OrderModal } from '@components/modal/modal-order';
 
 export const App = () => {
 	const location = useLocation();
@@ -40,7 +43,7 @@ export const App = () => {
 
 	useEffect(() => {
 		dispatch(checkAuth());
-	}, [dispatch]);
+	}, []);
 
 	return (
 		<>
@@ -64,10 +67,12 @@ export const App = () => {
 						<Route index element={<OnlyAuth component={<Profile />} />} />
 						<Route
 							path='orders'
-							element={<OnlyAuth component={<Orders />} />}
-						/>
+							element={<OnlyAuth component={<Orders />} />}></Route>
 					</Route>
+					<Route path='/profile/orders/:id' element={<OrderPage />} />
 					<Route path='/ingredients/:id' element={<Ingredient />} />
+					<Route path='/feed' element={<Feed />} />
+					<Route path='/feed/:id' element={<OrderPage />} />
 					<Route path='*' element={<NotFound />} />
 				</Routes>
 				{background && (
@@ -80,6 +85,8 @@ export const App = () => {
 								</Modal>
 							}
 						/>
+						<Route path='/feed/:id' element={<OrderModal />} />
+						<Route path='/profile/orders/:id' element={<OrderModal />} />
 					</Routes>
 				)}
 			</main>
