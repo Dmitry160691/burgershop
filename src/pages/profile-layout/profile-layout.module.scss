@@ -1,11 +1,12 @@
 .container {
-	padding: 120px 20px 0 20px;
+	padding: 0px 20px;
 	width: 100%;
 	display: flex;
-	gap: 40px;
+	gap: 60px;
 }
 
 .left {
+	min-width: 320px;
 	max-width: 320px;
 }
 
@@ -32,4 +33,8 @@
 
 .exit {
 	cursor: pointer;
+}
+
+.outlet {
+	max-height: calc(100vh - 88px - 40px);
 }

@@ -28,9 +28,7 @@ export const IngredientDetail: FC = () => {
 		carbohydrates,
 	} = selectIngredient;
 
-	return isLoading ? (
-		'Добавить реакт-лоадер'
-	) : (
+	return isLoading ? null : (
 		<div className={s.container}>
 			<img src={imageSrc} alt={name} className={`${s.img} mb-4`} />
 			<span className='text_type_main-medium mb-8'>{name}</span>

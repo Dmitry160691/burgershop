@@ -2,7 +2,9 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import s from './profile-layout.module.scss';
 import { useAppDispatch } from '@services/store';
 import { logout } from '../../api/auth.api';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+import { connect, disconnect } from '@services/slices/authSlice';
+import { WSS_ORDERS_USER_URL } from '../../constants';
 
 export const ProfileLayout: FC = () => {
 	const dispatch = useAppDispatch();
@@ -16,9 +18,16 @@ export const ProfileLayout: FC = () => {
 		});
 	};
 
+	useEffect(() => {
+		dispatch(connect(WSS_ORDERS_USER_URL));
+		return () => {
+			dispatch(disconnect());
+		};
+	}, []);
+
 	return (
 		<div className={s.container}>
-			<div className={s.left}>
+			<div className={`${s.left} pt-30`}>
 				<ul className={s.navigate}>
 					<li className={s.link}>
 						<NavLink to='/profile' end>
@@ -56,7 +65,9 @@ export const ProfileLayout: FC = () => {
 					В этом разделе вы можете изменить свои персональные данные
 				</p>
 			</div>
-			<Outlet />
+			<div className={`${s.outlet} mt-10`}>
+				<Outlet />
+			</div>
 		</div>
 	);
 };

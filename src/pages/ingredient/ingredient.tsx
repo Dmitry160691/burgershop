@@ -18,7 +18,7 @@ export const Ingredient: FC = () => {
 
 			currentIngredient && dispatch(addIngredient(currentIngredient));
 		}
-	}, [data]);
+	}, [data, id]);
 
 	return (
 		<div className={s.container}>
