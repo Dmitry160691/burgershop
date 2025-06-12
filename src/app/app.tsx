@@ -50,43 +50,43 @@ export const App = () => {
 			<AppHeader />
 			<main className={s.container}>
 				<Routes location={background || location}>
-					<Route path='/' element={<Home />} />
-					<Route path='/login' element={<OnlyUnAuth component={<Login />} />} />
+					<Route index element={<Home />} />
+					<Route path='login' element={<OnlyUnAuth component={<Login />} />} />
 					<Route
-						path='/register'
+						path='register'
 						element={<OnlyUnAuth component={<Register />} />}
 					/>
 					<Route
-						path='/forgot-password'
+						path='forgot-password'
 						element={<OnlyUnAuth component={<ForgotPassword />} />}
 					/>
-					<Route path='/reset-password' element={<ResetPassword />} />
+					<Route path='reset-password' element={<ResetPassword />} />
 					<Route
-						path='/profile'
+						path='profile'
 						element={<OnlyAuth component={<ProfileLayout />} />}>
 						<Route index element={<OnlyAuth component={<Profile />} />} />
 						<Route
 							path='orders'
 							element={<OnlyAuth component={<Orders />} />}></Route>
 					</Route>
-					<Route path='/profile/orders/:id' element={<OrderPage />} />
-					<Route path='/ingredients/:id' element={<Ingredient />} />
-					<Route path='/feed' element={<Feed />} />
-					<Route path='/feed/:id' element={<OrderPage />} />
+					<Route path='profile/orders/:id' element={<OrderPage />} />
+					<Route path='ingredients/:id' element={<Ingredient />} />
+					<Route path='feed' element={<Feed />} />
+					<Route path='feed/:id' element={<OrderPage />} />
 					<Route path='*' element={<NotFound />} />
 				</Routes>
 				{background && (
 					<Routes>
 						<Route
-							path='/ingredients/:id'
+							path='ingredients/:id'
 							element={
 								<Modal onClose={handleCloseModal} title='Детали ингредиента'>
 									<IngredientDetail />
 								</Modal>
 							}
 						/>
-						<Route path='/feed/:id' element={<OrderModal />} />
-						<Route path='/profile/orders/:id' element={<OrderModal />} />
+						<Route path='feed/:id' element={<OrderModal />} />
+						<Route path='profile/orders/:id' element={<OrderModal />} />
 					</Routes>
 				)}
 			</main>
