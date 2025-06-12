@@ -1,12 +1,17 @@
+import { FC } from 'react';
 import s from './list-order-badge.module.scss';
 
-type Props = {
+type ListOrdersBadgeProps = {
 	background: string;
 	text?: string;
 	style?: React.CSSProperties;
 };
 
-export function ListOrdersBadge({ background, text, ...props }: Props) {
+export const ListOrdersBadge: FC<ListOrdersBadgeProps> = ({
+	background,
+	text,
+	...props
+}) => {
 	const style = text
 		? {
 				background,
@@ -24,4 +29,4 @@ export function ListOrdersBadge({ background, text, ...props }: Props) {
 			)}
 		</span>
 	);
-}
+};

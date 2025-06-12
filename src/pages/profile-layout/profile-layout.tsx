@@ -3,7 +3,7 @@ import s from './profile-layout.module.scss';
 import { useAppDispatch } from '@services/store';
 import { logout } from '../../api/auth.api';
 import { FC, useEffect } from 'react';
-import { connect, disconnect } from '@services/slices/authSlice';
+import { connect, disconnect } from '@services/slices/auth/authSlice';
 import { WSS_ORDERS_USER_URL } from '../../constants';
 
 export const ProfileLayout: FC = () => {

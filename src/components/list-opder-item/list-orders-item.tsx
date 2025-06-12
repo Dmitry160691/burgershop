@@ -6,8 +6,9 @@ import {
 import { useNavigate, useLocation } from 'react-router';
 import s from './list-orders-item.module.scss';
 import { useAppDispatch, useAppSelector } from '@services/store';
-import { addOrder } from '@services/slices/viewSlice';
+import { addOrder } from '@services/slices/view/viewSlice';
 import { OrderType } from '../../types/app.types';
+import { FC } from 'react';
 
 type ListOrdersItem = {
 	hasStatus?: boolean;
@@ -19,7 +20,7 @@ const status = {
 	done: 'Выполнен',
 };
 
-export function ListOrdersItem(props: ListOrdersItem) {
+export const ListOrdersItem: FC<ListOrdersItem> = (props) => {
 	const {
 		ingredients: ingredientsProp,
 		_id: id,
@@ -110,4 +111,4 @@ export function ListOrdersItem(props: ListOrdersItem) {
 			</div>
 		</div>
 	);
-}
+};

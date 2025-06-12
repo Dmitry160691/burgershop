@@ -7,7 +7,7 @@ import {
 import { IngredientType } from '../../types/app.types';
 import { useDrag } from 'react-dnd';
 import { useAppDispatch } from '@services/store';
-import { addIngredient } from '@services/slices/viewSlice';
+import { addIngredient } from '@services/slices/view/viewSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 type IngredientCardProps = {
@@ -34,7 +34,7 @@ export const IngredientCard: FC<IngredientCardProps> = ({ ingredient }) => {
 
 	return (
 		<>
-			<div className={`mt-7 ${s.card}`} onClick={handleOpenModal} ref={drag}>
+			<div className={`${s.card} mt-7 `} onClick={handleOpenModal} ref={drag}>
 				{!!count && <Counter count={count} />}
 				<img src={image} alt={name} className='mb-1 ml-4 mr-4' />
 				<div className='mb-1'>

@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import s from './ingredient.module.scss';
 import { useAppDispatch, useAppSelector } from '@services/store';
 import { Link, useParams } from 'react-router-dom';
-import { addIngredient } from '@services/slices/viewSlice';
+import { addIngredient } from '@services/slices/view/viewSlice';
 import { IngredientDetail } from '@components/ingredient-details/ingrediends-detail';
 
 export const Ingredient: FC = () => {

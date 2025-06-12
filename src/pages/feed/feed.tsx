@@ -1,13 +1,13 @@
-import ListOrders from '@components/list-order/list-order';
+import { ListOrders } from '@components/list-order/list-order';
 import { useAppDispatch, useAppSelector } from '../../services/store';
-import ProgressOrders from '@components/progress/progress-orders';
+import { ProgressOrders } from '@components/progress/progress-orders';
 import { useEffect } from 'react';
-import { disconnect, connect } from '@services/slices/orderSlice';
+import { disconnect, connect } from '@services/slices/order/orderSlice';
 import s from './feed.module.scss';
 import { Loader } from '@components/loader/loader';
 import { WSS_ORDERS_URL } from '../../constants';
 
-export function Feed() {
+export const Feed = () => {
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(connect(WSS_ORDERS_URL));
@@ -40,4 +40,4 @@ export function Feed() {
 	}
 
 	return <Loader />;
-}
+};

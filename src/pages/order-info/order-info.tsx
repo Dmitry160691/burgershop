@@ -13,7 +13,7 @@ const statusMap = {
 	done: 'Выполнен',
 };
 
-export function OrderInfo() {
+export const OrderInfo = () => {
 	const { selectOrder } = useAppSelector((state) => state.view);
 	const { data: ingredients } = useAppSelector((state) => state.ingredients);
 
@@ -83,4 +83,4 @@ export function OrderInfo() {
 	}
 
 	return <Loader />;
-}
+};

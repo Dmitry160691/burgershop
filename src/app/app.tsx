@@ -10,7 +10,7 @@ import { ForgotPassword } from '@pages/forgot-password/forgot-password';
 import { Modal } from '@components/modal/modal';
 import { IngredientDetail } from '@components/ingredient-details/ingrediends-detail';
 import { useAppDispatch } from '@services/store';
-import { removeIngredient } from '@services/slices/viewSlice';
+import { removeIngredient } from '@services/slices/view/viewSlice';
 import { Ingredient } from '@pages/ingredient/ingredient';
 import { Orders } from '@pages/orders/orders';
 import { ProfileLayout } from '@pages/profile-layout/profile-layout';

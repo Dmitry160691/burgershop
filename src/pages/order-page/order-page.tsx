@@ -5,10 +5,10 @@ import { OrderInfo } from '@pages/order-info/order-info';
 import { fetchOrderById } from '../../api/post-order.api';
 import s from './order-page.module.scss';
 
-export function OrderPage() {
+export const OrderPage = () => {
 	const { id } = useParams();
 	const dispatch = useAppDispatch();
-	const { data, status } = useAppSelector((state) =>
+	const { data } = useAppSelector((state) =>
 		location.pathname.startsWith('/profile') ? state.auth : state.order
 	);
 
@@ -25,4 +25,4 @@ export function OrderPage() {
 			<OrderInfo />
 		</main>
 	);
-}
+};

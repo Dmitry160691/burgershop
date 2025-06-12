@@ -1,11 +1,12 @@
+import { FC } from 'react';
 import s from './progress.module.scss';
 
-type Props = {
+type ProgressDoneProps = {
 	title: string;
 	total: number;
 };
 
-export default function ProgressDone({ title, total }: Props) {
+export const ProgressDone: FC<ProgressDoneProps> = ({ title, total }) => {
 	return (
 		<div className={s.done}>
 			<h3 className='text text_type_main-medium'>{title}</h3>
@@ -18,4 +19,4 @@ export default function ProgressDone({ title, total }: Props) {
 			</div>
 		</div>
 	);
-}
+};
