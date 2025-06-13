@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { postOrder } from '../../api/post-order.api';
-import { OrderMessageType } from '../../types/app.types';
+import { postOrder } from '../../../api/post-order.api';
+import { OrderMessageType } from '../../../types/app.types';
 
 type OrderState = {
 	data: OrderMessageType | null;
@@ -16,7 +16,7 @@ type OrderState = {
 	isError: boolean;
 };
 
-const initialState: OrderState = {
+export const initialState: OrderState = {
 	data: null,
 	orderNumber: null,
 	error: null,
@@ -82,4 +82,4 @@ export const {
 	onError,
 } = orderSlice.actions;
 
-export default orderSlice;
+export default orderSlice.reducer;

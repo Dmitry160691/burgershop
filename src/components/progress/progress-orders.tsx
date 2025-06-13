@@ -1,7 +1,8 @@
 import { OrderType } from '../../types/app.types';
 import s from './progress.module.scss';
-import ProgressDone from './progress-done';
+import { ProgressDone } from './progress-done';
 import { ProgressColumn } from './progress-column';
+import { FC } from 'react';
 
 type ProgressOrdersProps = {
 	orders: OrderType[];
@@ -9,11 +10,11 @@ type ProgressOrdersProps = {
 	totalToday: number;
 };
 
-export default function ProgressOrders({
+export const ProgressOrders: FC<ProgressOrdersProps> = ({
 	total,
 	totalToday,
 	orders,
-}: ProgressOrdersProps) {
+}) => {
 	const ordersDone = orders
 		.filter((order) => order.status === 'done')
 		.slice(0, 10);
@@ -35,4 +36,4 @@ export default function ProgressOrders({
 			<ProgressDone title='Выполнено за сегодня:' total={totalToday} />
 		</aside>
 	);
-}
+};

@@ -4,15 +4,15 @@ import {
 	ResponseAuthData,
 	ResponseUser,
 	UserTypeWithoutPassword,
-} from '../../types/app.types';
+} from '../../../types/app.types';
 import {
 	forgotPassword,
 	login,
 	logout,
 	register,
 	resetPassword,
-} from '../../api/auth.api';
-import { getUser, updateUser } from '../../api/user.api';
+} from '../../../api/auth.api';
+import { getUser, updateUser } from '../../../api/user.api';
 
 type State = {
 	data: OrderMessageType | null;
@@ -29,7 +29,7 @@ type State = {
 	errorMessage: string;
 };
 
-const initialState: State = {
+export const initialState: State = {
 	data: null,
 	user: null,
 	isLoading: true,
@@ -214,4 +214,4 @@ export const {
 	cancelCheck,
 } = authSlice.actions;
 
-export default authSlice;
+export default authSlice.reducer;

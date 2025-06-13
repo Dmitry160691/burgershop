@@ -1,13 +1,14 @@
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import s from './order-info-item.module.scss';
 import { useAppSelector } from '@services/store';
+import { FC } from 'react';
 
-type Props = {
+type OrderInfoItemProps = {
 	id: string;
 	count: number;
 };
 
-export function OrderInfoItem({ id, count }: Props) {
+export const OrderInfoItem: FC<OrderInfoItemProps> = ({ id, count }) => {
 	const { isLoading, isError, data } = useAppSelector(
 		(state) => state.ingredients
 	);
@@ -36,4 +37,4 @@ export function OrderInfoItem({ id, count }: Props) {
 			</div>
 		</li>
 	) : null;
-}
+};

@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-
-import { addOrder, removeOrder } from '@services/slices/viewSlice';
+import { addOrder, removeOrder } from '@services/slices/view/viewSlice';
 import { OrderInfo } from '@pages/order-info/order-info';
 import { Modal } from './modal';
 import { useAppDispatch, useAppSelector } from '@services/store';
 
-export function OrderModal() {
+export const OrderModal = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 
@@ -38,4 +37,4 @@ export function OrderModal() {
 			</Modal>
 		);
 	}
-}
+};

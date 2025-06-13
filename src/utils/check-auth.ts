@@ -2,7 +2,7 @@ import { AppDispatch } from '@services/store';
 import { getCookie } from './cookie';
 import { getUser } from '../api/user.api';
 import { logout } from '../api/auth.api';
-import { cancelCheck } from '@services/slices/authSlice';
+import { cancelCheck } from '@services/slices/auth/authSlice';
 
 export const checkAuth = () => async (dispatch: AppDispatch) => {
 	const refreshToken = getCookie('refresh');

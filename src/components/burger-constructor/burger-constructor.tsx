@@ -16,14 +16,14 @@ import {
 	addIngredient,
 	clearCart,
 	removeIngredient,
-} from '@services/slices/cartSlice';
+} from '@services/slices/cart/cartSlice';
 import { v4 as uuidv4 } from 'uuid';
 import {
 	minusAll,
 	minusCount,
 	plusBun,
 	plusCount,
-} from '@services/slices/ingredientsSlice';
+} from '@services/slices/ingredients/ingredientsSlice';
 import { postOrder } from '../../api/post-order.api';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getCookie } from '@utils/cookie';
@@ -83,7 +83,7 @@ export const BurgerConstructor: FC = () => {
 					<OrderDetails />
 				</Modal>
 			)}
-			<section ref={drop} className={`pl-4 ${s.container}`}>
+			<section ref={drop} className={`${s.container} pl-4`}>
 				<>
 					<div className={`mt-20 ${s['components-container']}`}>
 						{bun ? (

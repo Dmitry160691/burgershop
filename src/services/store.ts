@@ -1,8 +1,8 @@
-import { combineSlices, configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import ingredient from './slices/ingredientsSlice';
-import cart from './slices/cartSlice';
-import order, {
+import ingredient from './slices/ingredients/ingredientsSlice';
+import cartReducer from './slices/cart/cartSlice';
+import orderReducer, {
 	connect,
 	disconnect,
 	onConnected,
@@ -10,8 +10,8 @@ import order, {
 	sendMessage,
 	onMessageReceived,
 	onError,
-} from './slices/orderSlice';
-import auth, {
+} from './slices/order/orderSlice';
+import authReducer, {
 	connect as userConnect,
 	disconnect as userDisconnect,
 	onConnected as onUserConnected,
@@ -19,8 +19,8 @@ import auth, {
 	sendMessage as userSendMessage,
 	onMessageReceived as onUserMessageReceived,
 	onError as onUserError,
-} from './slices/authSlice';
-import view from './slices/viewSlice';
+} from './slices/auth/authSlice';
+import viewReducer from './slices/view/viewSlice';
 import { OrderMessageType } from '../types/app.types';
 import { createWebSocketMiddleware } from '../socket-middleware';
 
@@ -53,7 +53,13 @@ const userOrderWebSocketMiddleware =
 		}
 	);
 
-export const reducer = combineSlices(ingredient, cart, order, view, auth);
+const reducer = combineReducers({
+	ingredients: ingredient,
+	cart: cartReducer,
+	order: orderReducer,
+	view: viewReducer,
+	auth: authReducer,
+});
 
 export const store = configureStore({
 	reducer,

@@ -6,7 +6,7 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useAppDispatch } from '@services/store';
 import { useDrag, useDrop } from 'react-dnd';
-import { moveIngredient } from '@services/slices/cartSlice';
+import { moveIngredient } from '@services/slices/cart/cartSlice';
 
 type IngredientConstructorElementProps = {
 	id: string;

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IngredientType, OrderType } from '../../types/app.types';
-import { fetchOrderById } from '../../api/post-order.api';
+import { IngredientType, OrderType } from '../../../types/app.types';
+import { fetchOrderById } from '../../../api/post-order.api';
 
 type ViewState = {
 	selectIngredient: IngredientType | null;
@@ -9,7 +9,7 @@ type ViewState = {
 	isError: boolean;
 };
 
-const initialState: ViewState = {
+export const initialState: ViewState = {
 	selectIngredient: null,
 	selectOrder: null,
 	isLoading: false,
@@ -53,4 +53,4 @@ const viewSlice = createSlice({
 
 export const { addIngredient, removeIngredient, addOrder, removeOrder } =
 	viewSlice.actions;
-export default viewSlice;
+export default viewSlice.reducer;

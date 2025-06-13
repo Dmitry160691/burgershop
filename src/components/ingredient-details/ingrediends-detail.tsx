@@ -3,7 +3,7 @@ import s from './ingrediends-detail.module.scss';
 import { CompoundBlock } from '@components/compound-block/compound-block';
 import { useAppDispatch, useAppSelector } from '@services/store';
 import { useParams } from 'react-router-dom';
-import { addIngredient } from '@services/slices/viewSlice';
+import { addIngredient } from '@services/slices/view/viewSlice';
 
 export const IngredientDetail: FC = () => {
 	const dispatch = useAppDispatch();

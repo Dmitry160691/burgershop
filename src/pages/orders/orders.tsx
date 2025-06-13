@@ -1,4 +1,4 @@
-import ListOrders from '@components/list-order/list-order';
+import { ListOrders } from '@components/list-order/list-order';
 import { useAppSelector } from '@services/store';
 
 export const Orders = () => {

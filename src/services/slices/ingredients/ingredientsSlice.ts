@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ResponseDataType, IngredientType } from '../../types/app.types';
-import { getIngredients } from '../../api/get-ingredients.api ';
+import { ResponseDataType, IngredientType } from '../../../types/app.types';
+import { getIngredients } from '../../../api/get-ingredients.api ';
 
 type IngredientState = {
 	data: IngredientType[];
@@ -8,7 +8,7 @@ type IngredientState = {
 	isError: boolean;
 };
 
-const initialState: IngredientState = {
+export const initialState: IngredientState = {
 	data: [],
 	isLoading: false,
 	isError: false,
@@ -63,4 +63,4 @@ const ingredientSlice = createSlice({
 
 export const { plusCount, minusCount, plusBun, minusAll } =
 	ingredientSlice.actions;
-export default ingredientSlice;
+export default ingredientSlice.reducer;
